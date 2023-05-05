@@ -107,7 +107,8 @@ public class GameMenu extends JFrame
         instr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         instr.setVisible(true);
     }
-
+    
+    //window to game
     public static void play_screen()
     {
         JFrame play = new JFrame("Game");
