@@ -97,7 +97,7 @@ public class GameMenu extends JFrame
             }
         });
 
-        JLabel instructions = new JLabel("OBJECTIVE OF GAME: use the keys on your keyboard to get your character to the end of the maze ");
+        JLabel instructions = new JLabel("OBJECTIVE OF GAME: use the keys on your keyboard to get your character to the end of the maze. Follow the white path to reach the exit. Once the first level is complete you will be taken to the second level, and finally the third ");
         instructions.setBounds(75, 100, 500, 50);
         instructions.setFont(new Font ("Serif", Font.PLAIN, 50));
         instr.add(instructions);
