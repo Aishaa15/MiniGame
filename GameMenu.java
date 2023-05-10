@@ -53,6 +53,7 @@ public class GameMenu extends JFrame
         {
             public void actionPerformed(ActionEvent e)
             {
+                Game game = new Game();
                 screen.dispose();
                 play_screen();
             
