@@ -4,11 +4,7 @@ import java.awt.event.KeyEvent;
 
 
 
-/**
- * AVATAR (CREACION DE PERSONAJE Y DEFINICION DE MOVIMIENTOS)
- * @author fucalex
- * 
- */
+
 public class Avatar {
     Maze lab=new Maze();
     int x=40;
@@ -17,87 +13,64 @@ public class Avatar {
     int height=40;
     int movement=40;
         
-    /**
-    *FORMA Y COLOR DEL PERSONAJE
-    * Se definen las caracteristicas tales como forma, tamaño y colores
-    * del avatar.Java proporciona la clase Graphics, que permite dibujar
-    * elipses, cuadrados, líneas, mostrar texto y también tiene muchos 
-    * otros métodos de dibujo. Para poder pintar, debemos crear un componente 
-    * y pasarlo al programa como un argumento al método paint().
-     * @param grafico
-    */
-        /**
-         * Base (Este es el "espacio personal" del avatar. 
-         * Se toma los valores de ubicacion y tamaño definidos en clase publica. 
-         */
-    public void paint(Graphics grafico){
-        grafico.setColor(Color.pink);
-        grafico.fillRect(x, y, width, height);
-        grafico.setColor(Color.white);
-        grafico.drawRect(x, y, width, height);
+    
+    public void paint(Graphics graphic){
+        graphic.setColor(Color.pink);
+        graphic.fillRect(x, y, width, height);
+        graphic.setColor(Color.white);
+        graphic.drawRect(x, y, width, height);
         
-        /**
-         *Cabeza (Para todos los siguiente elementos, se hacen los graficos, 
-         *se ubican en coordenadas y se les da color)
-         */
-        grafico.setColor(Color.white);
-        grafico.fillOval(x+16,y+3,8,8);
-        grafico.setColor(Color.white);
         
-        //Brazos y hombros
-        grafico.fillRect(x+9,y+12,4,14);
-        grafico.fillRect(x+11,y+12,4,4);
-        grafico.fillRect(x+28,y+12,4,14);
-        grafico.fillRect(x+26,y+12,4,4);
-         grafico.fillRect(x+14,y+12,13,14);
+        graphic.setColor(Color.white);
+        graphic.fillOval(x+16,y+3,8,8);
+        graphic.setColor(Color.white);
+        
+        
+        graphic.fillRect(x+9,y+12,4,14);
+        graphic.fillRect(x+11,y+12,4,4);
+        graphic.fillRect(x+28,y+12,4,14);
+        graphic.fillRect(x+26,y+12,4,4);
+        graphic.fillRect(x+14,y+12,13,14);
        
-        //Piernas
-        grafico.fillRect(x+14,y+24,6,14);
-        grafico.fillRect(x+21,y+24,6,14);
+        
+        graphic.fillRect(x+14,y+24,6,14);
+        graphic.fillRect(x+21,y+24,6,14);
     }
     
-    /**
-    *CAPTURA DE MOVIMIENTO
-    * Para indicar cuales son las teclas que funcionan en el juego, se indica
-    * el codigo de las teclas de direccion. 
-    * Aqui tambien se indica por qué el avatar se debe mover a ciertos lados.
-    * "!=" indica que puede moverse a cualquier elemento que no sea 1 (mas adelante
-    * se explica que 1, corresponde a un bloque del laberinto).
-    * @param event
-    * @see https://www.yoelprogramador.com/teclas-del-teclado-y-valores-de-codigos-de-tecla/
-    */
     
-    public void teclaPresionada(KeyEvent event){
+    
+    public void keyPressed(KeyEvent event)
+    {
         int[][]maze=lab.getMaze();
         
-        if(event.getKeyCode()==37){//Mover a la izquierda
+        if(event.getKeyCode()==37)
+        {
             if(maze[y/40][(x/40)-1] !=1){
                 x=x-movement;
             }
         }
-        if(event.getKeyCode()==39){//Mover a la derecha
+        if(event.getKeyCode()==39)
+        {
             if(maze[y/40][(x/40)+1]!=1){
                 x=x+movement;
             }
         }
-        if(event.getKeyCode()==40){//Mover abajo
+        if(event.getKeyCode()==40)
+        {
             if(maze[(y/40)+1][x/40]!=1){
                 y=y+movement;
             }
         }
-        if(event.getKeyCode()==38){//Mover arriba
+        if(event.getKeyCode()==38)
+        {
             if(maze[(y/40)-1][x/40]!=1){
                 y=y-movement;
             }
         }
         
-        /**
-        *SIGUIENTE NIVEL
-        * Para alcanzar el final del nivel, el jugador debe estar ubicado en la posicion de x, y, de la esquina
-        * inferior derecha, donde se activará el cambio de nivel y el avatar será ubicado en la esquina
-        * superior izquierda del siguiente nivel
-        */
-        if(x==840 && y==440){
+       
+        if(x==840 && y==440)
+        {
             Game.changeLevel();
             x=40;
             y=40;

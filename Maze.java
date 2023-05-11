@@ -1,15 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-/**
- * MAZE (Laberinto)
- * En este archivo definimos la forma del laberinto y los niveles de juego. 
- * Inicialmente se definen la cantidad de filas y columnas donde se formará el 
- * laberinto, asi como las dimensiones de los bloques que rellenaran las 
- * intersecciones fila/columna
- * @author fucalex
- * 
- */
+
 public class Maze {
     int[][]lab=new int[13][23];
     int row=0;
@@ -19,46 +11,32 @@ public class Maze {
     int blockwidth=40;
     int blockheight=40;
     
-    /**
-    * Definicion de colores de fondo para los laberintos segun nivel
-    * con el fin de ayudar a diferenciar el paso por los multiples niveles.
-    */
+   
     
-    public void paint(Graphics grafico){
+    public void paint(Graphics graphics){
         int [][]maze=getMaze();
         
         for(row=0;row<rownumber;row++){
             for(col=0;col<colnumber;col++){
                 if(maze[row][col]==1){
-                    if(Game.getLevel()==1){grafico.setColor(Color.black);}
-                    if(Game.getLevel()==2){grafico.setColor(Color.yellow);}
-                    if(Game.getLevel()>=3){grafico.setColor(Color.orange);}
+                    if(Game.getLevel()==1){graphics.setColor(Color.black);}
+                    if(Game.getLevel()==2){graphics.setColor(Color.yellow);}
+                    if(Game.getLevel()>=3){graphics.setColor(Color.orange);}
 
-                    grafico.fillRect(col*40,row*40,blockwidth,blockheight);
-                    grafico.setColor(Color.black);
-                    grafico.drawRect(col*40,row*40,blockwidth,blockheight);
+                    graphics.fillRect(col*40,row*40,blockwidth,blockheight);
+                    graphics.setColor(Color.black);
+                    graphics.drawRect(col*40,row*40,blockwidth,blockheight);
                 }
             }
         }
-        grafico.drawString("Start", 5, 62);
-        grafico.drawString("End", 850, 462);
+        graphics.drawString("Start", 5, 62);
+        graphics.drawString("End", 850, 462);
     }
     
     public int [][] getMaze(){
         if(Game.getLevel()==1){
             
-        /**
-        * FORMACION DE LABERINTOS
-        * - Ancho: colnumber=23 (columnas)
-        * - Alto: rownumber=13 (filas)
-        *Notese que los "1", forman bloques sólidos
-        *los cuales no pueden ser traspasados por el personaje.
-        *Esos mismos bloques se usan para formar los bordes del laberinto.
-        *
-        * El jugador entonces, moverá el avatar, por los espacios "vacios" 
-        * indicados por los "0".
-        */
-        
+       
             //Level 1
             int maze[][]=
             {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},

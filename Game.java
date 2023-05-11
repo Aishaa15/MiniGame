@@ -7,21 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- * The Game panel inherits attributes and methods from the main class (or base class) "JPanel". 
- * However, since "Game" is a subclass, it can add its own fields and methods, 
- * which is a fundamental pillar of Object-Oriented Programming.
- */
+
 public class Game extends JPanel{
     Maze maze=new Maze();
     Avatar avatar=new Avatar();
     public static int level=1;
     
-   /**
-    * register an object that is responsible for "listening" if a key is pressed
-    * 
-    * Nota: la (e), significa "event"
-    */
+   
         
     public  Game(){
         addKeyListener(new KeyListener(){
@@ -31,7 +23,7 @@ public class Game extends JPanel{
             
             @Override
             public void keyPressed(KeyEvent e) {
-                avatar.teclaPresionada(e);
+                avatar.keyPressed(e);
             }
         
              @Override
@@ -43,43 +35,23 @@ public class Game extends JPanel{
         setFocusable(true);
     }
     
-   /**
-    * Las caracteristicas visibles del laberinto y el personaje, son definidas 
-    * en sus respectivos archivos
-     * @param grafico
-    */
+  
 
-    public void paint(Graphics grafico){
-        maze.paint(grafico);
-        avatar.paint(grafico);
+    public void paint(Graphics graphics){
+        maze.paint(graphics);
+        avatar.paint(graphics);
     }
-   /**
-    * Para cambiar de nivel, cuando el avatar llegue a una posicion determinada
-    * en el laberinto (definido en avatar.java), al nivel actual se le sumará 
-    * una unidad para indicar que se debe cargar el siguiente nivel en el
-    * frame del juego.
-    */    
+   
     public static int changeLevel(){
         return level++;
     }
     
-   /**
-    * Para cargar el laberinto, cuando se cargue la base del siguiente nivel,
-    * dependiendo el número de la misma (1, 2 o 3), se cargará el laberinto
-    * (definido en maze.java), por medio de "return level".
-    */  
-
+  
     public static int getLevel(){
         return level;
     }
     
-   /**
-    * Aqui definimos el tamaño y el titulo de la ventana del juego 
-    * (en pixeles (ancho, alto), qué va a ir en ella (el juego en sí y su 
-    * localizacion ["setlocation", definido en coordenadas]), y la forma en la 
-    * que cerraremos el juego.
-    */ 
-
+  
     public static void main(String[]args){
            JOptionPane.showMessageDialog(null, "Years ago, a scientist created a new animal and called it 'ernudo'.\nBut a fiercy fire destroyed his lab.\nNowadays, a great explorer called 'Martino', has decided to get in the ruins\nof that old lab, to proof that animal exists indeed, but he danger lies on...");
            JOptionPane.showMessageDialog(null, "Will he survive? Ready to help him get out the maze?");
@@ -92,15 +64,7 @@ public class Game extends JPanel{
            myWindow.setVisible(true);
            myWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
            
-       /**
-        * FIN DEL JUEGO
-        * 
-        * Mediante la declaracion try/catch, por medio de la cual podemos manejar
-        * errores de tiempo de ejecucion, cuando el jugador pierde, intentamos 
-        * ejecutar una pequeña espera. Como esta espera termina en error, entonces 
-        * se indica a traves de un mensaje que el jugador perdio y se recarga el
-        * laberinto usando "game.repaint".
-        */ 
+       
            
            
            while (true){
@@ -111,13 +75,7 @@ public class Game extends JPanel{
             }
             myWindow.repaint();   
             
-                   /**
-                    * Por otro lado, si el jugador llegó al final del ultimo laberinto sin 
-                    * dificultades, entonces se mostrará un mensaje de victoria. Esto debido a 
-                    * que al llegar al final del laberinto, se carga un o nuevo, pero como hay 
-                    * un numero limitado de laberintos, si se va a cargar uno mas alla del limite 
-                    * (getLevel), entonces se muestra el mensaje y se cierra el juego.
-                    */ 
+                  
     
             if(getLevel()>3){
                 JOptionPane.showMessageDialog(null, "you did it! see you soon.");
