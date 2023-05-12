@@ -42,22 +42,22 @@ public class Avatar {
     public void keyPressed(KeyEvent event){
         int[][]maze=lab.getMaze();
         
-        if(event.getKeyCode()==37){//Mover a la izquierda
+        if(event.getKeyCode()==37){
             if(maze[y/40][(x/40)-1] !=1){
                 x=x-movement;
             }
         }
-        if(event.getKeyCode()==39){//Mover a la derecha
+        if(event.getKeyCode()==39){
             if(maze[y/40][(x/40)+1]!=1){
                 x=x+movement;
             }
         }
-        if(event.getKeyCode()==40){//Mover abajo
+        if(event.getKeyCode()==40){
             if(maze[(y/40)+1][x/40]!=1){
                 y=y+movement;
             }
         }
-        if(event.getKeyCode()==38){//Mover arriba
+        if(event.getKeyCode()==38){
             if(maze[(y/40)-1][x/40]!=1){
                 y=y-movement;
             }
