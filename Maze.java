@@ -13,22 +13,31 @@ public class Maze {
     int blockheight=40;
     
         
-    public void paint(Graphics graphic){
-        int [][]maze=getMaze();
-        
-        for(row=0;row<rownumber;row++){
-            for(col=0;col<colnumber;col++){
-                if(maze[row][col]==1){
-                    if(Game.getLevel()==1){graphic.setColor(Color.black);}
-                    if(Game.getLevel()==2){graphic.setColor(Color.yellow);}
-                    if(Game.getLevel()>=3){graphic.setColor(Color.orange);}
+    public void paint(Graphics graphic) 
+    {
+        int[][] maze = getMaze();
 
-                    graphic.fillRect(col*40,row*40,blockwidth,blockheight);
+        for (row = 0; row < rownumber; row++) {
+            for (col = 0; col < colnumber; col++) {
+                if (maze[row][col] == 1) {
+                    // Set color based on the game level
+                    if (Game.getLevel() == 1) {
+                        graphic.setColor(Color.black);
+                    } else if (Game.getLevel() == 2) {
+                        graphic.setColor(Color.yellow);
+                    } else if (Game.getLevel() >= 3) {
+                        graphic.setColor(Color.orange);
+                    }
+
+                    // Draw filled rectangle
+                    graphic.fillRect(col * 40, row * 40, blockwidth, blockheight);
                     graphic.setColor(Color.black);
-                    graphic.drawRect(col*40,row*40,blockwidth,blockheight);
+                    // Draw rectangle outline
+                    graphic.drawRect(col * 40, row * 40, blockwidth, blockheight);
                 }
             }
         }
+        // Draw labels for start and end points
         graphic.drawString("Start", 5, 62);
         graphic.drawString("End", 850, 462);
     }
@@ -40,18 +49,18 @@ public class Maze {
             //Level 1
             int maze[][]=
             {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-            { 1,0,0,1,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,1,1},
-            { 1,1,0,1,1,0,1,0,1,0,1,0,1,0,1,0,1,1,1,1,0,1,1},
-            { 1,1,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,1},
-            { 1,1,1,0,1,0,1,0,0,0,1,0,1,0,0,0,1,1,0,1,0,1,1},
-            { 1,1,0,0,1,0,1,0,1,1,1,0,1,0,1,0,0,0,0,1,0,1,1},
-            { 1,1,0,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,0,1,1,1,1},
-            { 1,1,0,1,0,0,0,0,1,0,0,0,1,0,0,1,1,1,0,1,0,1,1},
-            { 1,1,0,1,0,1,1,1,1,0,1,1,1,1,0,1,0,1,0,1,0,1,1},
-            { 1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,1,0,1,1},
-            { 1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,0,1,1},
-            { 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1},
-            { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+            {1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1},
+            {1,0,1,0,1,0,1,1,1,1,1,1,1,1,0,1,0,1,0,1,1,1,1},
+            {1,0,1,0,1,0,1,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,1},
+            {1,0,1,0,0,0,1,0,1,1,1,1,0,1,0,0,0,1,0,1,1,1,1},
+            {1,0,1,1,1,1,1,0,1,0,0,1,0,1,0,1,1,1,0,1,0,0,1},
+            {1,0,0,0,0,0,0,0,1,0,1,1,0,1,0,0,0,0,0,1,1,1,1},
+            {1,0,1,1,1,1,1,1,1,0,1,0,0,1,1,1,1,1,0,1,0,0,1},
+            {1,0,1,0,0,0,0,0,0,0,1,0,1,1,1,0,0,1,0,1,1,1,1},
+            {1,0,1,0,1,1,1,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,1},
+            {1,0,1,0,1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,1},
+            {1,0,1,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
             
             lab=maze;
         }
