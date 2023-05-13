@@ -2,66 +2,64 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-
 public class Maze {
-    int[][]lab=new int[13][23];
-    int row=0;
-    int col=0;
-    int rownumber=13;
-    int colnumber=23;
-    int blockwidth=40;
-    int blockheight=40;
+    int[][] lab = new int[13][23];  // 2D array representing the maze
+    int row = 0;  // Current row index
+    int col = 0;  // Current column index
+    int rownumber = 13;  // Total number of rows in the maze
+    int colnumber = 23;  // Total number of columns in the maze
+    int blockwidth = 40;  // Width of each maze block
+    int blockheight = 40;  // Height of each maze block
     
-        
-    public void paint(Graphics graphic) 
-    {
+    
+    public void paint(Graphics maze_graphics) {
         int[][] maze = getMaze();
 
         for (row = 0; row < rownumber; row++) {
             for (col = 0; col < colnumber; col++) {
                 if (maze[row][col] == 1) {
-                    // Set color based on the game level
+                    // Set the color based on the game level
                     if (Game.getLevel() == 1) {
-                        graphic.setColor(Color.black);
+                        maze_graphics.setColor(Color.LIGHT_GRAY);
                     } else if (Game.getLevel() == 2) {
-                        graphic.setColor(Color.yellow);
+                        maze_graphics.setColor(Color.YELLOW);
                     } else if (Game.getLevel() >= 3) {
-                        graphic.setColor(Color.orange);
+                        maze_graphics.setColor(Color.RED);
                     }
 
-                    // Draw filled rectangle
-                    graphic.fillRect(col * 40, row * 40, blockwidth, blockheight);
-                    graphic.setColor(Color.black);
-                    // Draw rectangle outline
-                    graphic.drawRect(col * 40, row * 40, blockwidth, blockheight);
+                    // Draw the filled rectangle
+                    maze_graphics.fillRect(col * 40, row * 40, blockwidth, blockheight);
+                    maze_graphics.setColor(Color.black);
+                    // Draw the rectangle outline
+                    maze_graphics.drawRect(col * 40, row * 40, blockwidth, blockheight);
                 }
             }
         }
-        // Draw labels for start and end points
-        graphic.drawString("Start", 5, 62);
-        graphic.drawString("End", 850, 462);
+        // Draw the labels for start and end points
+        maze_graphics.drawString("Start", 5, 62);
+        maze_graphics.drawString("End", 850, 462);
     }
-    
-    public int [][] getMaze(){
+
+
+        public int [][] getMaze(){
         if(Game.getLevel()==1){
-            
-       
+    
             //Level 1
             int maze[][]=
             {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-            {1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1},
-            {1,0,1,0,1,0,1,1,1,1,1,1,1,1,0,1,0,1,0,1,1,1,1},
-            {1,0,1,0,1,0,1,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,1},
-            {1,0,1,0,0,0,1,0,1,1,1,1,0,1,0,0,0,1,0,1,1,1,1},
-            {1,0,1,1,1,1,1,0,1,0,0,1,0,1,0,1,1,1,0,1,0,0,1},
-            {1,0,0,0,0,0,0,0,1,0,1,1,0,1,0,0,0,0,0,1,1,1,1},
-            {1,0,1,1,1,1,1,1,1,0,1,0,0,1,1,1,1,1,0,1,0,0,1},
-            {1,0,1,0,0,0,0,0,0,0,1,0,1,1,1,0,0,1,0,1,1,1,1},
-            {1,0,1,0,1,1,1,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,1},
-            {1,0,1,0,1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,1},
-            {1,0,1,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1},
-            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
-            
+            { 1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1},
+            { 1,1,0,1,1,0,0,0,0,0,0,0,1,1,1,0,1,1,1,1,0,1,1},
+            { 1,1,0,0,1,0,1,0,1,1,1,0,0,0,1,0,1,0,0,1,0,1,1},
+            { 1,1,1,0,1,0,1,0,1,1,0,0,1,0,0,0,1,1,0,1,0,1,1},
+            { 1,1,0,0,1,0,0,0,1,1,1,0,1,0,1,0,0,0,0,1,0,1,1},
+            { 1,1,0,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,0,1,1,1,1},
+            { 1,1,0,1,0,0,0,0,1,0,0,0,1,0,0,1,1,1,0,1,1,1,1},
+            { 1,1,0,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,0,1,1,1,1},
+            { 1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,1,1,1,0,1,0,1,1},
+            { 1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1,1},
+            { 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,1},
+            { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+
             lab=maze;
         }
         
@@ -70,7 +68,7 @@ public class Maze {
             //Level 2
             int maze[][]=
             {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-            { 1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1},
+            { 1,0,0,0,1,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,1},
             { 1,1,1,0,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0,1,1},
             { 1,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,1},
             { 1,1,0,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,0,1,1},
@@ -78,14 +76,14 @@ public class Maze {
             { 1,1,1,0,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,0,1,1},
             { 1,1,0,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,1},
             { 1,1,0,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1,1,0,1,1},
-            { 1,1,0,1,0,0,0,0,1,0,1,0,0,1,0,0,0,0,0,1,0,1,1},
-            { 1,1,0,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,0,1,1,1,1},
-            { 1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1},
+            { 1,1,0,1,0,0,0,0,1,0,1,0,0,1,0,0,0,0,1,1,0,1,1},
+            { 1,1,0,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1},
+            { 1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
             { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
             
             lab=maze;
         }
-        
+
         if(Game.getLevel()==3){
             
             //Level 3
@@ -106,6 +104,8 @@ public class Maze {
             
             lab=maze;
         }
+
+    
         
         return lab;
         
