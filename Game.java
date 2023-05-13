@@ -3,22 +3,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- * The Game panel inherits attributes and methods from the main class (or base class) "JPanel". 
- * However, since "Game" is a subclass, it can add its own fields and methods, 
- * which is a fundamental pillar of Object-Oriented Programming.
- */
 public class Game extends JPanel{
     Maze maze=new Maze();
     Avatar avatar=new Avatar();
     public static int level=1;
     
-   
-        
     public  Game(){
         addKeyListener(new KeyListener(){
             @Override
@@ -27,7 +21,7 @@ public class Game extends JPanel{
             
             @Override
             public void keyPressed(KeyEvent e) {
-                avatar.keyPressed(e);
+                avatar.key_presses(e);
             }
         
              @Override
@@ -39,53 +33,49 @@ public class Game extends JPanel{
         setFocusable(true);
     }
     
-  
-
-    public void paint(Graphics graphic){
-        maze.paint(graphic);
-        avatar.paint(graphic);
+    public void paint(Graphics maze_graphics){
+        maze.paint(maze_graphics);
+        avatar.paint(maze_graphics);
     }
-    
+  
     public static int changeLevel(){
         return level++;
     }
     
-  
 
     public static int getLevel(){
         return level;
     }
     
-   
 
     public static void main(String[]args){
-           JOptionPane.showMessageDialog(null, "Years ago, a scientist created a new animal and called it 'ernudo'.\nBut a fiercy fire destroyed his lab.\nNowadays, a great explorer called 'Martino', has decided to get in the ruins\nof that old lab, to proof that animal exists indeed, but he danger lies on...");
-           JOptionPane.showMessageDialog(null, "Will he survive? Ready to help him get out the maze?");
-           JOptionPane.showMessageDialog(null, "Remember, get out the maze before the monsters catch you!");
-           JFrame myWindow=new JFrame("AVATAR RUN ∫_☻");
-           Game game =new Game();
-           myWindow.add(game);
-           myWindow.setSize(920,540);
-           myWindow.setLocation(300,200);
-           myWindow.setVisible(true);
-           myWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-           
+	   JOptionPane.showMessageDialog(null, "Years ago, a girl named lucy went to the maze of mirrors with her friends.\n However, she accidently wanders off by herself.\n As she walks through the maze, she can't find any way out.\n Lucy accidently teleports herself into a new dimension.");
+       JOptionPane.showMessageDialog(null, "Can you help Lucy flee the alternate dimension by getting\n her get through a series of mazes?");
+	   JOptionPane.showMessageDialog(null, "Use the arrowkeys on your keyboard to get her to the end of the maze!");
+       JFrame myWindow=new JFrame("ILLUSION LANE");
+       Game game =new Game();
+       myWindow.add(game);
+       myWindow.setSize(920,540);
+       myWindow.setLocation(300,200);
+       myWindow.setVisible(true);
+       myWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        
-           
-           
-           while (true){
-               try {
-                   Thread.sleep(10);
-            } catch (InterruptedException ex) {
-                 Logger.getLogger(Game.class.getName()).log(Level.SEVERE, "you lose");
+       
+       
+       while (true){
+           try {
+               Thread.sleep(10);
+        } catch (InterruptedException ex) {
+             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, "you lose");
+        }
+        myWindow.repaint();   
+        
+
+
+        if(getLevel()>3){
+            JOptionPane.showMessageDialog(null, "Congratulations! You helped Lucy get out of the mazes.\n Now she can go back to hanging out with her friends.");
+            System.exit(0);
             }
-            myWindow.repaint();   
-            
-                       
-            if(getLevel()>3){
-                JOptionPane.showMessageDialog(null, "you did it! see you soon.");
-                System.exit(0);
-                }
-            }
+        }
     }
 }
