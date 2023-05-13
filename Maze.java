@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 
+
 public class Maze {
     int[][]lab=new int[13][23];
     int row=0;
@@ -10,46 +11,43 @@ public class Maze {
     int colnumber=23;
     int blockwidth=40;
     int blockheight=40;
-    
-        
-    public void paint(Graphics graphic){
+
+    public void paint(Graphics maze_grph){
         int [][]maze=getMaze();
         
         for(row=0;row<rownumber;row++){
             for(col=0;col<colnumber;col++){
                 if(maze[row][col]==1){
-                    if(Game.getLevel()==1){graphic.setColor(Color.black);}
-                    if(Game.getLevel()==2){graphic.setColor(Color.yellow);}
-                    if(Game.getLevel()>=3){graphic.setColor(Color.orange);}
+                    if(Game.getLevel()==1){maze_grph.setColor(Color.red);}
+                    if(Game.getLevel()==2){maze_grph.setColor(Color.blue);}
 
-                    graphic.fillRect(col*40,row*40,blockwidth,blockheight);
-                    graphic.setColor(Color.black);
-                    graphic.drawRect(col*40,row*40,blockwidth,blockheight);
+                    maze_grph.fillRect(col*40,row*40,blockwidth,blockheight);
+                    maze_grph.setColor(Color.black);
+                    maze_grph.drawRect(col*40,row*40,blockwidth,blockheight);
                 }
             }
         }
-        graphic.drawString("Start", 5, 62);
-        graphic.drawString("End", 850, 462);
+        maze_grph.drawString("Start", 5, 62);
+        maze_grph.drawString("End", 850, 462);
     }
     
     public int [][] getMaze(){
         if(Game.getLevel()==1){
-            
-       
+    
             //Level 1
             int maze[][]=
             {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-            { 1,0,0,1,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,1,1},
-            { 1,1,0,1,1,0,1,0,1,0,1,0,1,0,1,0,1,1,1,1,0,1,1},
-            { 1,1,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,1},
-            { 1,1,1,0,1,0,1,0,0,0,1,0,1,0,0,0,1,1,0,1,0,1,1},
-            { 1,1,0,0,1,0,1,0,1,1,1,0,1,0,1,0,0,0,0,1,0,1,1},
+            { 1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1},
+            { 1,1,0,1,1,0,0,0,1,1,1,0,1,1,1,0,1,1,1,1,0,1,1},
+            { 1,1,0,0,1,0,1,0,1,1,1,0,0,0,1,0,1,0,0,1,0,1,1},
+            { 1,1,1,0,1,0,1,0,1,1,0,0,1,0,0,0,1,1,0,1,0,1,1},
+            { 1,1,0,0,1,0,0,0,1,1,1,0,1,0,1,0,0,0,0,1,0,1,1},
             { 1,1,0,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,0,1,1,1,1},
             { 1,1,0,1,0,0,0,0,1,0,0,0,1,0,0,1,1,1,0,1,0,1,1},
             { 1,1,0,1,0,1,1,1,1,0,1,1,1,1,0,1,0,1,0,1,0,1,1},
-            { 1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,1,0,1,1},
-            { 1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,0,1,1},
-            { 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1},
+            { 1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,1,1,1,0,1,0,1,1},
+            { 1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1,1},
+            { 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1},
             { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
             
             lab=maze;
@@ -75,7 +73,7 @@ public class Maze {
             
             lab=maze;
         }
-        
+
         if(Game.getLevel()==3){
             
             //Level 3
@@ -96,6 +94,7 @@ public class Maze {
             
             lab=maze;
         }
+        
         
         return lab;
         
