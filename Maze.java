@@ -1,8 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-
-
 public class Maze {
     int[][]lab=new int[13][23];
     int row=0;
@@ -11,45 +9,54 @@ public class Maze {
     int colnumber=23;
     int blockwidth=40;
     int blockheight=40;
-
-    public void paint(Graphics maze_grph){
+    
+    
+    public void paint(Graphics maze_graphics){
         int [][]maze=getMaze();
         
         for(row=0;row<rownumber;row++){
             for(col=0;col<colnumber;col++){
                 if(maze[row][col]==1){
-                    if(Game.getLevel()==1){maze_grph.setColor(Color.red);}
-                    if(Game.getLevel()==2){maze_grph.setColor(Color.blue);}
+                    if(Game.getLevel()==1){
+                    maze_graphics.setColor(Color.LIGHT_GRAY);
 
-                    maze_grph.fillRect(col*40,row*40,blockwidth,blockheight);
-                    maze_grph.setColor(Color.black);
-                    maze_grph.drawRect(col*40,row*40,blockwidth,blockheight);
+                    }
+                    if(Game.getLevel()==2){
+                    maze_graphics.setColor(Color.YELLOW);
+                    }
+                    if(Game.getLevel()>=3){
+                    maze_graphics.setColor(Color.RED);
+                    }
+
+                    maze_graphics.fillRect(col*40,row*40,blockwidth,blockheight);
+                    maze_graphics.setColor(Color.black);
+                    maze_graphics.drawRect(col*40,row*40,blockwidth,blockheight);
                 }
             }
         }
-        maze_grph.drawString("Start", 5, 62);
-        maze_grph.drawString("End", 850, 462);
+        maze_graphics.drawString("Start", 5, 62);
+        maze_graphics.drawString("End", 850, 462);
     }
-    
-    public int [][] getMaze(){
+
+        public int [][] getMaze(){
         if(Game.getLevel()==1){
     
             //Level 1
             int maze[][]=
             {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
             { 1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1},
-            { 1,1,0,1,1,0,0,0,1,1,1,0,1,1,1,0,1,1,1,1,0,1,1},
+            { 1,1,0,1,1,0,0,0,0,0,0,0,1,1,1,0,1,1,1,1,0,1,1},
             { 1,1,0,0,1,0,1,0,1,1,1,0,0,0,1,0,1,0,0,1,0,1,1},
             { 1,1,1,0,1,0,1,0,1,1,0,0,1,0,0,0,1,1,0,1,0,1,1},
             { 1,1,0,0,1,0,0,0,1,1,1,0,1,0,1,0,0,0,0,1,0,1,1},
             { 1,1,0,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,0,1,1,1,1},
-            { 1,1,0,1,0,0,0,0,1,0,0,0,1,0,0,1,1,1,0,1,0,1,1},
-            { 1,1,0,1,0,1,1,1,1,0,1,1,1,1,0,1,0,1,0,1,0,1,1},
+            { 1,1,0,1,0,0,0,0,1,0,0,0,1,0,0,1,1,1,0,1,1,1,1},
+            { 1,1,0,1,0,1,1,1,1,0,1,1,1,1,0,1,1,1,0,1,1,1,1},
             { 1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,1,1,1,0,1,0,1,1},
             { 1,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1,1},
-            { 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1},
+            { 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,1},
             { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
-            
+
             lab=maze;
         }
         
@@ -58,7 +65,7 @@ public class Maze {
             //Level 2
             int maze[][]=
             {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-            { 1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1},
+            { 1,0,0,0,1,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,1},
             { 1,1,1,0,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1,1,0,1,1},
             { 1,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,1},
             { 1,1,0,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,0,1,1},
@@ -66,9 +73,9 @@ public class Maze {
             { 1,1,1,0,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,0,1,1},
             { 1,1,0,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,1},
             { 1,1,0,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1,1,0,1,1},
-            { 1,1,0,1,0,0,0,0,1,0,1,0,0,1,0,0,0,0,0,1,0,1,1},
-            { 1,1,0,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,0,1,1,1,1},
-            { 1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1},
+            { 1,1,0,1,0,0,0,0,1,0,1,0,0,1,0,0,0,0,1,1,0,1,1},
+            { 1,1,0,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,0,1,1},
+            { 1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
             { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
             
             lab=maze;
@@ -94,7 +101,8 @@ public class Maze {
             
             lab=maze;
         }
-        
+
+    
         
         return lab;
         
