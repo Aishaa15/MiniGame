@@ -4,12 +4,12 @@ import java.awt.Graphics;
 public class Maze 
 {
     int[][]lab=new int[13][23];
-   int row=0;
-   int col=0;
-   int rownumber=13;
-   int colnumber=23;
-   int blockwidth=40;
-   int blockheight=40;
+    int row=0;
+    int col=0;
+    int rownumber=13;
+    int colnumber=23;
+    int blockwidth=40;
+    int blockheight=40;
   
   
    public void paint(Graphics maze_graphics) {
