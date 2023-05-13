@@ -33,9 +33,9 @@ public class Game extends JPanel{
         setFocusable(true);
     }
     
-    public void paint(Graphics maze_graphics){
-        maze.paint(maze_graphics);
-        avatar.paint(maze_graphics);
+    public void paint(Graphics mazegrphics){
+        maze.paint(mazegrphics);
+        avatar.paint(mazegrphics);
     }
   
     public static int changeLevel(){
@@ -49,9 +49,9 @@ public class Game extends JPanel{
     
 
     public static void main(String[]args){
-       JOptionPane.showMessageDialog(null, "A girl named lucy went to the maze of mirrors with her friends.\n However, she accidently wanders off by herself.\n As she walks through the maze, she can't find any way out.\n Lucy accidently teleports herself into a new dimension.");
-       JOptionPane.showMessageDialog(null, "Can you help Lucy flee the alternate dimension by getting\n her get through a series of mazes?");
-       JOptionPane.showMessageDialog(null, "Use the arrowkeys on your keyboard to get her to the end of the maze!");
+	   JOptionPane.showMessageDialog(null, "A girl named lucy went to the maze of mirrors with her friends.\n However, she accidently wanders off by herself.\n As she walks through the maze, she can't find any way out.\n Lucy accidently teleports herself into a new dimension.");
+       JOptionPane.showMessageDialog(null, "Can you help Lucy flee the alternate dimension by getting\n her through a series of mazes?");
+	   JOptionPane.showMessageDialog(null, "Use the arrowkeys on your keyboard to get her to the end of the maze!");
        JFrame myWindow=new JFrame("ILLUSION LANE");
        Game game =new Game();
        myWindow.add(game);
