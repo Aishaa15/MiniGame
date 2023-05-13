@@ -11,31 +11,31 @@ public class Maze {
     int blockheight=40;
     
     
-    public void paint(Graphics maze_graphics){
+    public void paint(Graphics mazegrphics){
         int [][]maze=getMaze();
         
         for(row=0;row<rownumber;row++){
             for(col=0;col<colnumber;col++){
                 if(maze[row][col]==1){
                     if(Game.getLevel()==1){
-                    maze_graphics.setColor(Color.LIGHT_GRAY);
+                    mazegrphics.setColor(Color.LIGHT_GRAY);
 
                     }
                     if(Game.getLevel()==2){
-                    maze_graphics.setColor(Color.YELLOW);
+                    mazegrphics.setColor(Color.YELLOW);
                     }
                     if(Game.getLevel()>=3){
-                    maze_graphics.setColor(Color.RED);
+                    mazegrphics.setColor(Color.RED);
                     }
 
-                    maze_graphics.fillRect(col*40,row*40,blockwidth,blockheight);
-                    maze_graphics.setColor(Color.black);
-                    maze_graphics.drawRect(col*40,row*40,blockwidth,blockheight);
+                    mazegrphics.fillRect(col*40,row*40,blockwidth,blockheight);
+                    mazegrphics.setColor(Color.black);
+                    mazegrphics.drawRect(col*40,row*40,blockwidth,blockheight);
                 }
             }
         }
-        maze_graphics.drawString("Start", 5, 62);
-        maze_graphics.drawString("End", 850, 462);
+        mazegrphics.drawString("Start", 5, 62);
+        mazegrphics.drawString("End", 850, 462);
     }
 
         public int [][] getMaze(){
