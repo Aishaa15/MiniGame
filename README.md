@@ -21,5 +21,6 @@ The game "Avatar Run" is based on a series of mazes that become more difficult a
 Rules:
 
 The player must reach a predefined goal point to win the game.
+
 The loading of the next maze is enabled by progressing to the following level.
 
