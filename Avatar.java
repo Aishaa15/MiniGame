@@ -14,11 +14,11 @@ public class Avatar {
     int movement=40;
         
 
-    public void paint(Graphics main_graphics){
-        main_graphics.setColor(Color.BLACK);
-        main_graphics.setColor(Color.black);
-        main_graphics.fillOval(x+16,y+3,20,20);
-        main_graphics.setColor(Color.black);
+    public void paint(Graphics maingrphicss){
+        maingrphicss.setColor(Color.BLACK);
+        maingrphicss.setColor(Color.black);
+        maingrphicss.fillOval(x+16,y+3,20,20);
+        maingrphicss.setColor(Color.black);
     }
     
     public void key_presses(KeyEvent event){
