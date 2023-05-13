@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Maze {
+
     int[][]lab=new int[13][23];
     int row=0;
     int col=0;

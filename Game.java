@@ -7,10 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Game extends JPanel{
-    Maze maze=new Maze();
-    Avatar avatar=new Avatar();
-    public static int level=1;
+
     
     public  Game(){
         addKeyListener(new KeyListener(){
