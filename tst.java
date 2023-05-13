@@ -1,4 +1,20 @@
- public int [][] getMaze(){
+public void paint(Graphics graphics ){
+
+       
+        graphics.setColor(Color.red);
+        graphics.setColor(Color.BLACK);
+        graphics.setColor(Color.black);
+        graphics.fillOval(x+16,y+3,20,20);
+        graphics.setColor(Color.black);
+    
+    } 
+
+
+
+
+
+
+public int [][] getMaze(){
         if(Game.getLevel()==1){
     
             //Level 1
