@@ -1,4 +1,4 @@
-# MiniGame
+# Illusion Lane Description
 Project Management:
 
 design and write algorithms and subprograms to solve a variety of problems
